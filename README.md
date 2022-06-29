@@ -77,7 +77,7 @@ If at least one cluster was found, the tool outputs a folder with:
 [
   {
     "cluster_id": 0,
-    "features": [
+    "points": [
       {
         "id": 9,
         "name": "Rosanna Foggo",
@@ -94,7 +94,7 @@ If at least one cluster was found, the tool outputs a folder with:
 ```json
 {
   "type": "FeatureCollection",
-  "points": [
+  "features": [
     {
       "type": "Feature",
       "geometry": {
