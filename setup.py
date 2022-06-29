@@ -11,7 +11,6 @@ setup(
         "click",
         "geojson",
         "keplergl",
-        "distinctipy",
         "numpy",
         "pandas",
         "scikit-learn",
