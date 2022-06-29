@@ -1,6 +1,6 @@
 # geocluster
 
-> command-line tool for clustering geolocations.
+> 📍 command-line tool for clustering geolocations.
 
 ### Features
 
