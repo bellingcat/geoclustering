@@ -46,7 +46,7 @@ def main(distance, size, output, filename, algorithm):
         df=df, algorithm=algorithm, radius_km=distance, min_cluster_size=size
     )
 
-    if any(clusters) == False:
+    if not bool(clusters):
         click.echo("Did not find clusters matching input parameters.")
         return
 

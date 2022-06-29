@@ -14,6 +14,8 @@ def to_cluster_dict(df, clustering):
     """
     clusters_by_id = {}
 
+    print(clustering.labels_)
+
     for idx, cluster_id in enumerate(clustering.labels_):
         # ignore "noise" locations that don't belong to any cluster.
         if cluster_id > -1:
