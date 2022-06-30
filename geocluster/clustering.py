@@ -25,6 +25,24 @@ def to_cluster_dict(df, clustering):
     return clusters_by_id
 
 
+def is_valid_lat(val: str) -> bool:
+    """Given a string, check if it corresponds to a valid decimal latitude value"""
+    try:
+        val = float(val)
+        return val >= -90 and val <= 90
+    except:
+        return False
+
+
+def is_valid_lon(val: str) -> bool:
+    """Given a string, check if it corresponds to a valid decimal longitude value"""
+    try:
+        val = float(val)
+        return val >= -180 and val <= 180
+    except:
+        return False
+
+
 def cluster_locations(df, algorithm, radius_km, min_cluster_size):
     """
     Clusters a location dataframe into clusters.
@@ -32,10 +50,9 @@ def cluster_locations(df, algorithm, radius_km, min_cluster_size):
     within `radius_km` of each other.
     Outputs a dict grouping locations by `cluster_id`.
     """
-    COORD_REGEX = "^-?\d+.?\d*$"
-    valid_index = df.lat.astype(str).str.contains(
-        COORD_REGEX, regex=True
-    ) & df.lon.astype(str).str.contains(COORD_REGEX, regex=True)
+    valid_index = df.lat.astype(str).apply(is_valid_lat) & df.lon.astype(str).apply(
+        is_valid_lon
+    )
     if len(df_invalid := df[~valid_index]):
         print(f"Found {len(df_invalid)} invalid coordinate pairs, ignoring:")
         print(df_invalid[["lat", "lon"]])
