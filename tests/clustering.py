@@ -1,11 +1,9 @@
-import os
 from geocluster.clustering import cluster_locations
 from geocluster.io import read_csv_file
+from tests.helpers import get_fixture_path, read_fixture_csv
 
 
-def get_fixture_path():
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    return os.path.join(dir_path, "fixtures/clustering.csv")
+df = read_fixture_csv("clustering.csv")
 
 
 def has_member(list, name):
@@ -13,7 +11,6 @@ def has_member(list, name):
 
 
 def test_clustering_all():
-    df = read_csv_file(get_fixture_path())
     # there should be one cluster with all members but Erin.
     res = cluster_locations(
         df=df, algorithm="dbscan", radius_km=1.97, min_cluster_size=4
@@ -23,7 +20,6 @@ def test_clustering_all():
 
 
 def test_clustering_split():
-    df = read_csv_file(get_fixture_path())
     res = cluster_locations(
         df=df, algorithm="dbscan", radius_km=0.5, min_cluster_size=2
     )
@@ -39,7 +35,6 @@ def test_clustering_split():
 
 
 def test_clustering_none():
-    df = read_csv_file(get_fixture_path())
     # there should be no clusters now.
     res = cluster_locations(
         df=df, algorithm="dbscan", radius_km=0.5, min_cluster_size=3
