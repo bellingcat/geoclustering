@@ -34,11 +34,7 @@ setup(
         "scikit-learn",
     ],
     extras_require={
-        "dev": [
-            "black",
-            "wheel",
-            "pre-commit"
-        ],
+        "dev": ["black", "wheel", "pre-commit"],
         "test": ["pytest"],
     },
     include_package_data=True,
