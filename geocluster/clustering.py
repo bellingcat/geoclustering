@@ -50,5 +50,5 @@ def cluster_locations(df, algorithm, radius_km, min_cluster_size):
             n_jobs=-1,
         )
 
-    X = np.radians(np.array(coordinates))
+    X = np.radians(np.array(coordinates).astype(float))
     return to_cluster_dict(df, clustering.fit(X))
