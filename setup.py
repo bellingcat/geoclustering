@@ -33,7 +33,14 @@ setup(
         "pandas",
         "scikit-learn",
     ],
-    extras_require={"dev": ["black", "wheel"]},
+    extras_require={
+        "dev": [
+            "black",
+            "wheel",
+            "pre-commit"
+        ],
+        "test": ["pytest"],
+    },
     include_package_data=True,
     zip_safe=False,
 )

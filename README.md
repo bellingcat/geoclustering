@@ -128,3 +128,17 @@ id 9, name Rosanna Foggo, lat -6.2074293, lon 106.8915948
 ### kepler.gl
 
 ![kepler.gl instance](https://user-images.githubusercontent.com/1682504/176478177-c0446b51-4060-495c-803d-79e2bbd3e966.png)
+
+## Develop
+
+It is assumed that you are using **Python3.9**. It is encouraged to [setup a virtualenv](https://wiki.archlinux.org/title/Python/Virtual_environment#venv>) for development.
+
+```sh
+    # install dependencies & dev-dependencies
+    pip install -e .[dev,test]
+
+    # install a git hook that runs the code formatter before each commit.
+    pre-commit install
+```
+
+We use `Black <https://github.com/psf/black>`_ as our code formatter. If you don't want to use the ``pre-commit`` hook, you can run the formatter manually or via an editor plugin.
