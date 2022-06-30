@@ -6,7 +6,7 @@ setup(
     description="",
     author="Bellingcat",
     packages=["geocluster"],
-    entry_points={"console_scripts": ["geocluster = geocluster.cli:main"]},
+    entry_points={"console_scripts": ["geocluster = geocluster.__main__:main"]},
     install_requires=[
         "click",
         "geojson",
