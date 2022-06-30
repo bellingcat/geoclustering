@@ -31,7 +31,9 @@ def read_csv_file(filename):
     initial_rows = len(df)
 
     df = df.dropna(subset=["lat", "lon"])
-    df = df.replace({np.nan: None})  # replace for other fields not to break kepler parsing
+    df = df.replace(
+        {np.nan: None}
+    )  # replace for other fields not to break kepler parsing
     print(f"Ignored {initial_rows - len(df)} coordinates with NaN")
 
     valid_index = df.lat.astype(str).apply(is_valid_lat) & df.lon.astype(str).apply(
