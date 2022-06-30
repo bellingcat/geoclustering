@@ -64,9 +64,9 @@ class GeoJSONEncoder:
                 "cluster_id": cluster_id,
             }
 
-            lon = props.pop("lon")
-            lat = props.pop("lat")
-
+            lon = float(props.pop("lon"))
+            lat = float(props.pop("lat"))
+            
             point = geojson.Point((lon, lat))
             self.state.append(geojson.Feature(geometry=point, properties=props))
 

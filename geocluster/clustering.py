@@ -32,6 +32,12 @@ def cluster_locations(df, algorithm, radius_km, min_cluster_size):
     within `radius_km` of each other.
     Outputs a dict grouping locations by `cluster_id`.
     """
+    valid_index = df.lat.str.contains('^\d+.?\d*$', regex= True) & df.lon.str.contains('^\d+.?\d*$', regex= True)
+    if len(df_invalid := df[~valid_index]):
+        print(f"Found {len(df_invalid)} invalid coordinate pairs:")
+        print(df_invalid[["lat", "lon"]])
+    df = df[valid_index]
+
     coordinates = df[["lat", "lon"]]
     radius_radians = km_to_radians(radius_km)
 
@@ -50,5 +56,5 @@ def cluster_locations(df, algorithm, radius_km, min_cluster_size):
             n_jobs=-1,
         )
 
-    X = np.radians(np.array(coordinates))
+    X = np.radians(np.array(coordinates).astype(float))
     return to_cluster_dict(df, clustering.fit(X))
