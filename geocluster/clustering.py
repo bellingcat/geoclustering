@@ -34,7 +34,7 @@ def cluster_locations(df, algorithm, radius_km, min_cluster_size):
     """
     valid_index = df.lat.str.contains('^\d+.?\d*$', regex= True) & df.lon.str.contains('^\d+.?\d*$', regex= True)
     if len(df_invalid := df[~valid_index]):
-        print(f"Found {len(df_invalid)} invalid coordinate pairs:")
+        print(f"Found {len(df_invalid)} invalid coordinate pairs, ignoring:")
         print(df_invalid[["lat", "lon"]])
     df = df[valid_index]
 
