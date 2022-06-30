@@ -4,6 +4,7 @@ import webbrowser
 import geocluster.clustering as clustering
 import geocluster.encoding as encoding
 import geocluster.io as io
+import numpy as np
 
 
 @click.command()
@@ -41,6 +42,7 @@ import geocluster.io as io
 @click.argument("filename", type=click.Path(exists=True))
 def main(distance, size, output, filename, algorithm):
     df = io.read_csv_file(filename)
+    df = df.replace({np.nan: None})
 
     clusters = clustering.cluster_locations(
         df=df, algorithm=algorithm, radius_km=distance, min_cluster_size=size
@@ -57,12 +59,7 @@ def main(distance, size, output, filename, algorithm):
     io.write_output_file(output, "result.geojson", encoded["geojson"])
     vis = io.write_visualization(output, "result.html", encoded["geojson"])
 
-    try:
-        webbrowser.open_new_tab("file://" + str(vis.absolute()))
-    except:
-        print(
-            f"Failed while opening result.html file in browser, possibly due to browser not being able to open path {vis.absolute()}, please open it manually to visualize data in kepler."
-        )
+    webbrowser.open_new_tab("file://" + str(vis.absolute()))
 
 
 if __name__ == "__main__":
