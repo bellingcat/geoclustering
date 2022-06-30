@@ -27,20 +27,12 @@ def is_valid_lon(val: str) -> bool:
 
 def read_csv_file(filename):
     """Read input csv file, dropping rows that don't have valid location data."""
-    df = pd.read_csv(filename)
-    initial_rows = len(df)
-
-    df = df.dropna(subset=["lat", "lon"])
     # replace NaN for other fields not to break kepler parsing.
-    df = df.replace({np.nan: None})
+    df = pd.read_csv(filename).replace({np.nan: None})
 
-    nan_rows = initial_rows - len(df)
-    if nan_rows > 0:
-        print(f"Ignored {nan_rows} coordinates with NaN.")
+    # construct an index of values with valid lat & lon.
+    valid_index = df.lat.apply(is_valid_lat) & df.lon.apply(is_valid_lon)
 
-    valid_index = df.lat.astype(str).apply(is_valid_lat) & df.lon.astype(str).apply(
-        is_valid_lon
-    )
     if len(df_invalid := df[~valid_index]):
         print(f"Found {len(df_invalid)} invalid coordinate pairs, ignoring:")
         print(df_invalid[["lat", "lon"]].to_string())

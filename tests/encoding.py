@@ -6,7 +6,7 @@ from tests.helpers import read_fixture_csv, read_fixture_content
 df = read_fixture_csv("clustering.csv")
 
 
-def test_encoders_no_errors():
+def test_encoders():
     clusters = {
         0: [
             {"id": 1, "name": "Alice", "lat": 52.523955, "lon": 13.442362},
