@@ -4,7 +4,6 @@ import webbrowser
 import geocluster.clustering as clustering
 import geocluster.encoding as encoding
 import geocluster.io as io
-import numpy as np
 
 
 @click.command()
@@ -42,7 +41,6 @@ import numpy as np
 @click.argument("filename", type=click.Path(exists=True))
 def main(distance, size, output, filename, algorithm):
     df = io.read_csv_file(filename)
-    df = df.replace({np.nan: None})
 
     clusters = clustering.cluster_locations(
         df=df, algorithm=algorithm, radius_km=distance, min_cluster_size=size
