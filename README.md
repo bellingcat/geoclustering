@@ -39,6 +39,12 @@ pip install .
 ```
 Usage: geoclustering [OPTIONS] FILENAME
 
+  Tool to cluster geolocations. A cluster is created when a certain number of
+  points (--size) each are within a given distance (--distance) of at least
+  one other point in the cluster. Input is supplied as a csv file. At a
+  minimum, each row needs to have a 'lat' and a 'lon' column. Other rows are
+  reflected to the output.
+
 Options:
   -d, --distance FLOAT            (in km) Max. distance between two points in
                                   a cluster.  [required]
@@ -52,6 +58,7 @@ Options:
                                   Default: dbscan
   --open                          Open the generated visualization in the
                                   default browser automatically.
+  --debug                         Print debug output.
   --help                          Show this message and exit.
 ```
 
