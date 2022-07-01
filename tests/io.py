@@ -1,4 +1,5 @@
 from pathlib import Path
+import shutil
 from geocluster.io import write_output_file
 from tests.helpers import read_fixture_csv
 
@@ -21,4 +22,4 @@ def test_write_output_file():
     with open(path) as f:
         assert f.read() == "test"
 
-    path.unlink()
+    shutil.rmtree(Path("./this"))
