@@ -15,23 +15,17 @@ A cluster is created when a certain number of points (=> `--size`) each are with
 
 ## Install
 
-Clone the repository:
+Install project with pip:
 
 ```sh
-git clone https://github.com/bellingcat/geoclustering
-cd geoclustering
+pip install geoclustering
 ```
 
-Install keplergl build dependencies:
+On some platforms, you might need to install kepler.gl build dependencies:
 
 ```sh
 # macos
 brew install proj gdal
-```
-
-Install project with pip:
-```sh
-pip install .
 ```
 
 ## Usage
@@ -141,4 +135,4 @@ It is assumed that you are using **Python3.9**. It is encouraged to [setup a vir
     pre-commit install
 ```
 
-We use `Black <https://github.com/psf/black>`_ as our code formatter. If you don't want to use the ``pre-commit`` hook, you can run the formatter manually or via an editor plugin.
+We use [Black](https://github.com/psf/black) as our code formatter. If you don't want to use the `pre-commit` hook, you can run the formatter manually or via an editor plugin.
