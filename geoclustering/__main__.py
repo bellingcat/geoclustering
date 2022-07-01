@@ -9,7 +9,7 @@ import geoclustering.io as io
 
 
 @click.command(
-    help="Tool to cluster geolocations. A cluster is created when a certain number of points (--size) each are within a given distance (--distance) of at least one other point in the cluster. Input is supplied as a csv file. At a minimum, each row needs to have a 'lat' and a 'lon' column. Other rows are reflected to the output."
+    help="Tool to cluster geolocations. A cluster is created when a certain number of points (defined with --size) each are within a given distance (defined with --distance) of at least one other point in the cluster. Input is supplied as a csv file. At a minimum, each row needs to have a 'lat' and a 'lon' column. Other rows are reflected to the output."
 )
 @click.option(
     "--distance",

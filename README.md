@@ -10,7 +10,7 @@
 
 ### Clustering Method
 
-A cluster is created when a certain number of points (=> `--size`) each are within a given distance (=> `--distance`) of at least one other point in the cluster. 
+A cluster is created when a certain number of points (defined with `--size`) each are within a given distance (defined with `--distance`) of at least one other point in the cluster. 
 
 
 ## Install
@@ -34,10 +34,10 @@ brew install proj gdal
 Usage: geoclustering [OPTIONS] FILENAME
 
   Tool to cluster geolocations. A cluster is created when a certain number of
-  points (--size) each are within a given distance (--distance) of at least
-  one other point in the cluster. Input is supplied as a csv file. At a
-  minimum, each row needs to have a 'lat' and a 'lon' column. Other rows are
-  reflected to the output.
+  points (defined with --size) each are within a given distance (defined with
+  --distance) of at least one other point in the cluster. Input is supplied as
+  a csv file. At a minimum, each row needs to have a 'lat' and a 'lon' column.
+  Other rows are reflected to the output.
 
 Options:
   -d, --distance FLOAT            (in km) Max. distance between two points in
@@ -58,7 +58,7 @@ Options:
 
 ## Input
 
-Inputs are supplied as a `.csv` file. The only required fields are `lat` and `lon`, all other fields are reflected to the output.
+Inputs are supplied as a `.csv` file. At a minimum, each row needs to have a `lat` and a `lon`` column. Other rows are reflected to the output.
 
 ```csv
 id,name,lat,lon
