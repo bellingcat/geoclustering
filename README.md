@@ -59,7 +59,7 @@ id,name,lat,lon
 
 ## Output
 
-If at least one cluster was found, the tool outputs a folder with `json`, `geojson`, `text` and a kepler.gl `html` files.
+If at least one cluster was found, the tool outputs a folder with output as `json`, `geojson`, `txt` files. A kepler.gl `html` file is generated as well.
 
 ### JSON
 
@@ -108,7 +108,7 @@ Encodes a single `FeatureCollection`, containing all points as `Feature` objects
 }
 ```
 
-### txt
+### Text
 
 Encodes cluster as blocks separated by a newline, where each line in a cluster block contains one point.
 
