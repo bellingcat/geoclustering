@@ -22,7 +22,7 @@ setup(
     author_email="tech@bellingcat.com",
     license="MIT",
     packages=["geoclustering"],
-    package_data={"geoclustering": ["kepler_config.json"]}
+    package_data={"geoclustering": ["kepler_config.json"]},
     keywords=["cluster", "gis", "pattern-analysis"],
     entry_points={"console_scripts": ["geoclustering = geoclustering.__main__:main"]},
     install_requires=[
