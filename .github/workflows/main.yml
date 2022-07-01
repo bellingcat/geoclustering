@@ -17,15 +17,58 @@ on: [push]
 
 env:
   # Change this to invalidate existing cache.
+  CACHE_PREFIX: v0
   PYTHONPATH: ./
 
 jobs:
   checks:
     name: Python ${{ matrix.python }} - ${{ matrix.task.name }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: psf/black@stable
+    runs-on: [ubuntu-latest]
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.7', '3.10']
+        # task: # --show-capture=no on purpose
+        #   - name: Test
+        #     run: |
+        #       pytest --show-capture=no --color=yes tests/
+
+        include:
+          # - python: '3.10'
+          #   task:
+          #     name: Lint
+          #     run: flake8 .
+
+          # - python: '3.10'
+          #   task:
+          #     name: Type check
+          #     run: mypy .
+
+          - python: '3.10'
+            task:
+              name: Build
+              run: |
+                python setup.py check
+                python setup.py bdist_wheel sdist
+
+          - python: '3.10'
+            task:
+              name: Style
+              run: |
+                black --check .
+
+          # - python: '3.10'
+          #   task:
+          #     name: Docs
+          #     run: cd docs && make html
+
+  # checks:
+  #   name: Lint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: psf/black@stable
 
   release:
     name: Release
