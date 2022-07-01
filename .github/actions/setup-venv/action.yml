@@ -31,7 +31,6 @@ runs:
       with:
         path: .venv
         key: ${{ inputs.cache-prefix }}-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('Pipfile.lock') }}
-
     - if: steps.virtualenv-cache.outputs.cache-hit != 'true'
       shell: bash
       run: |

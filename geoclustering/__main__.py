@@ -38,8 +38,13 @@ import geoclustering.io as io
     default="dbscan",
     help="Clustering algorithm to be used. `optics` produces tighter clusters but is slower. Default: dbscan",
 )
+@click.option(
+    "--open",
+    is_flag=True,
+    help="Open the generated visualization in the default browser automatically.",
+)
 @click.argument("filename", type=click.Path(exists=True))
-def main(distance, size, output, filename, algorithm):
+def main(distance, size, output, filename, algorithm, open):
     df = io.read_csv_file(filename)
 
     clusters = clustering.cluster_locations(
@@ -57,7 +62,8 @@ def main(distance, size, output, filename, algorithm):
     io.write_output_file(output, "result.geojson", encoded["geojson"])
     vis = io.write_visualization(output, "result.html", encoded["geojson"])
 
-    webbrowser.open_new_tab("file://" + str(vis.absolute()))
+    if open:
+        webbrowser.open_new_tab("file://" + str(vis.absolute()))
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@
           "config": {
             "dataId": "clusters",
             "label": "clusters",
-            "color": [179, 173, 158],
+            "color": [248, 149, 112],
             "highlightColor": [252, 242, 26, 255],
             "columns": { "geojson": "_geojson" },
             "isVisible": true,
@@ -19,16 +19,30 @@
               "thickness": 0.5,
               "strokeColor": null,
               "colorRange": {
-                "name": "Global Warming",
-                "type": "sequential",
+                "name": "Uber Viz Qualitative 4",
+                "type": "qualitative",
                 "category": "Uber",
                 "colors": [
-                  "#5A1846",
-                  "#900C3F",
-                  "#C70039",
-                  "#E3611C",
-                  "#F1920E",
-                  "#FFC300"
+                  "#12939A",
+                  "#DDB27C",
+                  "#88572C",
+                  "#FF991F",
+                  "#F15C17",
+                  "#223F9A",
+                  "#DA70BF",
+                  "#125C77",
+                  "#4DC19C",
+                  "#776E57",
+                  "#17B8BE",
+                  "#F6D18A",
+                  "#B7885E",
+                  "#FFCB99",
+                  "#F89570",
+                  "#829AE3",
+                  "#E79FD5",
+                  "#1E96BE",
+                  "#89DAC1",
+                  "#B3AD9E"
                 ]
               },
               "strokeColorRange": {
