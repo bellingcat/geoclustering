@@ -1,9 +1,9 @@
 import click
 import webbrowser
 
-import geocluster.clustering as clustering
-import geocluster.encoding as encoding
-import geocluster.io as io
+import geoclustering.clustering as clustering
+import geoclustering.encoding as encoding
+import geoclustering.io as io
 
 
 @click.command()

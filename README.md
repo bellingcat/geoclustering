@@ -1,4 +1,4 @@
-# geocluster
+# geoclustering
 
 > 📍 command-line tool for clustering geolocations.
 
@@ -18,8 +18,8 @@ A cluster is created when a certain number of points (=> `--size`) each are with
 Clone the repository:
 
 ```sh
-git clone https://github.com/fspoettel/geocluster
-cd geocluster
+git clone https://github.com/bellingcat/geoclustering
+cd geoclustering
 ```
 
 Install keplergl build dependencies:
@@ -37,7 +37,7 @@ pip install .
 ## Usage
 
 ```
-Usage: geocluster [OPTIONS] FILENAME
+Usage: geoclustering [OPTIONS] FILENAME
 
 Options:
   -d, --distance FLOAT            (in km) Max. distance between two points in
