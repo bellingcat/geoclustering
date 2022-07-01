@@ -54,7 +54,6 @@ def main(distance, size, output, filename, algorithm, open, debug):
         if debug:
             click.secho(s, fg="bright_black")
 
-
     df = io.read_csv_file(filename)
     print_debug(f"Read {len(df)} valid coordinates from {Path(filename).absolute()}")
 
@@ -63,7 +62,7 @@ def main(distance, size, output, filename, algorithm, open, debug):
     )
 
     if not bool(clusters):
-        click.echo("Did not find clusters matching input parameters.")
+        click.secho("Did not find clusters matching input parameters.", fg="yellow")
         return
 
     print_debug(f"Found {len(clusters)} valid clusters using {algorithm}")
@@ -79,6 +78,8 @@ def main(distance, size, output, filename, algorithm, open, debug):
     if open:
         print_debug(f"Opening visualization in default browser")
         webbrowser.open_new_tab("file://" + str(vis.absolute()))
+
+    click.secho("Clustering completed.", fg="green")
 
 
 if __name__ == "__main__":
