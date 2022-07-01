@@ -13,8 +13,9 @@ scikit-learn = "*"
 
 [dev-packages]
 black = "*"
-wheel = "*"
+pre-commit = "*"
 pytest = "*"
+wheel = "*"
 
 [requires]
 python_version = "3.9"
