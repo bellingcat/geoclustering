@@ -2,9 +2,22 @@ from keplergl import KeplerGl
 from pathlib import Path
 from pkg_resources import resource_filename
 import json
-import json
 import pandas as pd
 import numpy as np
+import os
+import sys
+
+
+class HiddenPrints:
+    """Disables stdout prints for a block of code."""
+
+    def __enter__(self):
+        self._original_stdout = sys.stdout
+        sys.stdout = open(os.devnull, "w")
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        sys.stdout.close()
+        sys.stdout = self._original_stdout
 
 
 def is_valid_lat(val: str) -> bool:
@@ -58,7 +71,10 @@ def write_output_file(dirname, filename, data):
 
 def write_visualization(dirname, filename, data):
     """Write a visualization, ensuring parent directories."""
-    map = KeplerGl()
+    # Hide kepler stdout output.
+    with HiddenPrints():
+        map = KeplerGl()
+
     map.add_data(data=data, name="clusters")
 
     # config configures a default color scheme for our clusters layer.
@@ -67,6 +83,9 @@ def write_visualization(dirname, filename, data):
         map.config = json.loads(f.read())
 
     filepath = ensure_file_path(dirname, filename)
-    map.save_to_html(file_name=str(filepath), center_map=True)
+
+    # Hide kepler stdout output.
+    with HiddenPrints():
+        map.save_to_html(file_name=str(filepath), center_map=True)
 
     return filepath
