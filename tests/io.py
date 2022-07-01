@@ -1,6 +1,6 @@
 from pathlib import Path
 import shutil
-from geocluster.io import write_output_file
+from geoclustering.io import write_output_file
 from tests.helpers import read_fixture_csv
 
 

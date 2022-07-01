@@ -1,6 +1,5 @@
 import os
-
-from geocluster.io import read_csv_file
+from geoclustering.io import read_csv_file
 
 
 def get_fixture_path(filename):
