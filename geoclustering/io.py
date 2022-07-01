@@ -68,7 +68,7 @@ def write_visualization(dirname, filename, data):
     map.add_data(data=data, name="clusters")
 
     # config configures a default color scheme for our clusters layer.
-    config_file = resource_filename("geocluster", "kepler_config.json")
+    config_file = resource_filename("geoclustering", "kepler_config.json")
     with open(config_file) as f:
         map.config = json.loads(f.read())
 

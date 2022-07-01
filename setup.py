@@ -3,11 +3,11 @@ from setuptools import setup
 # version.py defines the VERSION and VERSION_SHORT variables.
 # We use exec here so we don't import cached_path whilst setting up.
 VERSION = {}  # type: ignore
-with open("geocluster/version.py", "r") as version_file:
+with open("geoclustering/version.py", "r") as version_file:
     exec(version_file.read(), VERSION)
 
 setup(
-    name="geocluster",
+    name="geoclustering",
     version=VERSION["VERSION"],
     description="📍 command-line tool for clustering geolocations.",
     long_description=open("README.md").read(),
@@ -21,9 +21,9 @@ setup(
     author="Bellingcat",
     author_email="tech@bellingcat.com",
     license="MIT",
-    packages=["geocluster"],
+    packages=["geoclustering"],
     keywords=["cluster", "gis", "pattern-analysis"],
-    entry_points={"console_scripts": ["geocluster = geocluster.__main__:main"]},
+    entry_points={"console_scripts": ["geoclustering = geoclustering.__main__:main"]},
     install_requires=[
         "click",
         "geojson",

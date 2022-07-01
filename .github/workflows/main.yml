@@ -68,7 +68,7 @@ jobs:
         if: always()
         run: |
           . .venv/bin/activate
-          pip uninstall -y geocluster
+          pip uninstall -y geoclustering
 
   release:
     name: Release
