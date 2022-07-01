@@ -3,7 +3,7 @@ from setuptools import setup
 # version.py defines the VERSION and VERSION_SHORT variables.
 # We use exec here so we don't import cached_path whilst setting up.
 VERSION = {}  # type: ignore
-with open("vk_url_scraper/version.py", "r") as version_file:
+with open("geocluster/version.py", "r") as version_file:
     exec(version_file.read(), VERSION)
 
 setup(
