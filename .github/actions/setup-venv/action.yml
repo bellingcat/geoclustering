@@ -30,7 +30,7 @@ runs:
       id: virtualenv-cache
       with:
         path: .venv
-        key: ${{ inputs.cache-prefix }}-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('requirements.txt', 'dev-requirements.txt') }}
+        key: ${{ inputs.cache-prefix }}-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('Pipfile.lock') }}
 
     - if: steps.virtualenv-cache.outputs.cache-hit != 'true'
       shell: bash
