@@ -131,7 +131,7 @@ It is assumed that you are using **Python3.9**. It is encouraged to [setup a vir
 
 ```sh
     # install dependencies & dev-dependencies
-    pip install -e .[dev,test]
+    pip install -e .[dev]
 
     # install a git hook that runs the code formatter before each commit.
     pre-commit install

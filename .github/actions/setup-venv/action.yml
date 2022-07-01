@@ -37,14 +37,14 @@ runs:
         # Set up virtual environment without cache hit.
         test -d .venv || virtualenv -p $(which python) --copies --reset-app-data .venv
         . .venv/bin/activate
-        pip install -e .[dev,test]
+        pip install -e .[dev]
 
     - if: steps.virtualenv-cache.outputs.cache-hit == 'true'
       shell: bash
       run: |
         # Set up virtual environment from cache hit.
         . .venv/bin/activate
-        pip install --no-deps -e .[dev,test]
+        pip install --no-deps -e .[dev]
 
     - shell: bash
       run: |
