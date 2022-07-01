@@ -8,10 +8,6 @@ import geoclustering.encoding as encoding
 import geoclustering.io as io
 
 
-def print_debug(s):
-    click.secho(s, fg="bright_black")
-
-
 @click.command(
     help="Tool to cluster geolocations. A cluster is created when a certain number of points (--size) each are within a given distance (--distance) of at least one other point in the cluster. Input is supplied as a csv file. At a minimum, each row needs to have a 'lat' and a 'lon' column. Other rows are reflected to the output."
 )
@@ -54,12 +50,13 @@ def print_debug(s):
 @click.option("--debug", is_flag=True, help="Print debug output.")
 @click.argument("filename", type=click.Path(exists=True))
 def main(distance, size, output, filename, algorithm, open, debug):
-    if debug:
-        print_debug(f"Reading input from {Path(filename).absolute()}")
+    def print_debug(s):
+        if debug:
+            click.secho(s, fg="bright_black")
+
 
     df = io.read_csv_file(filename)
-    if debug:
-        print_debug(f"Read {len(df)} valid coordinates")
+    print_debug(f"Read {len(df)} valid coordinates from {Path(filename).absolute()}")
 
     clusters = clustering.cluster_locations(
         df=df, algorithm=algorithm, radius_km=distance, min_cluster_size=size
