@@ -15,23 +15,17 @@ A cluster is created when a certain number of points (=> `--size`) each are with
 
 ## Install
 
-Clone the repository:
+Install with pip:
 
 ```sh
-git clone https://github.com/bellingcat/geoclustering
-cd geoclustering
+pip install geoclustering
 ```
 
-Install keplergl build dependencies:
+If the install fails, you might need to install kepler.gl build dependencies:
 
 ```sh
 # macos
 brew install proj gdal
-```
-
-Install project with pip:
-```sh
-pip install .
 ```
 
 ## Usage
@@ -74,7 +68,7 @@ id,name,lat,lon
 
 ## Output
 
-If at least one cluster was found, the tool outputs a folder with `json`, `geojson`, `text` and a kepler.gl `html` files.
+If at least one cluster was found, the tool outputs a folder with output as `json`, `geojson`, `txt` files. A kepler.gl `html` file is generated as well.
 
 ### JSON
 
@@ -123,7 +117,7 @@ Encodes a single `FeatureCollection`, containing all points as `Feature` objects
 }
 ```
 
-### txt
+### Text
 
 Encodes cluster as blocks separated by a newline, where each line in a cluster block contains one point.
 
@@ -137,3 +131,17 @@ id 9, name Rosanna Foggo, lat -6.2074293, lon 106.8915948
 ### kepler.gl
 
 ![kepler.gl instance](https://user-images.githubusercontent.com/1682504/176478177-c0446b51-4060-495c-803d-79e2bbd3e966.png)
+
+## Develop
+
+It is assumed that you are using **Python3.9+**. It is encouraged to [setup a virtualenv](https://wiki.archlinux.org/title/Python/Virtual_environment#venv>) for development.
+
+```sh
+    # install dependencies & dev-dependencies
+    pip install -e .[dev]
+
+    # install a git hook that runs the code formatter before each commit.
+    pre-commit install
+```
+
+We use [Black](https://github.com/psf/black) as our code formatter. If you don't want to use the `pre-commit` hook, you can run the formatter manually or via an editor plugin.
