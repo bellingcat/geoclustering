@@ -50,6 +50,8 @@ Options:
                                   Clustering algorithm to be used. `optics`
                                   produces tighter clusters but is slower.
                                   Default: dbscan
+  --open                          Open the generated visualization in the
+                                  default browser automatically.
   --help                          Show this message and exit.
 ```
 
