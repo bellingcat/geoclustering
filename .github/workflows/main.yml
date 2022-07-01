@@ -63,6 +63,32 @@ jobs:
           #     name: Docs
           #     run: cd docs && make html
 
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python environment
+        uses: ./.github/actions/setup-venv
+        with:
+          python-version: ${{ matrix.python }}
+          cache-prefix: ${{ env.CACHE_PREFIX }}
+
+      - name: ${{ matrix.task.name }}
+        run: |
+          . .venv/bin/activate
+          ${{ matrix.task.run }}
+
+      - name: Upload package distribution files
+        if: matrix.task.name == 'Build'
+        uses: actions/upload-artifact@v3
+        with:
+          name: package
+          path: dist
+
+      - name: Clean up
+        if: always()
+        run: |
+          . .venv/bin/activate
+          pip uninstall -y vk-url-scraper
   # checks:
   #   name: Lint
   #   runs-on: ubuntu-latest
