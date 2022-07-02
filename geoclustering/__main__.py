@@ -81,8 +81,8 @@ def main(distance, size, output, filename, algorithm, open, debug):
 
     if open:
         if vis:
-            print_debug(f"Opening visualization in default browser")
             webbrowser.open_new_tab("file://" + str(vis.absolute()))
+            print_debug(f"Opened visualization in default browser.")
         else:
             click.secho(
                 "Can't open kepler.gl: package not installed. Please re-install geoclustering with `pip install geoclustering[full]`.",
