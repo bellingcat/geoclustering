@@ -18,10 +18,14 @@ A cluster is created when a certain number of points (defined with `--size`) eac
 Install with pip:
 
 ```sh
+# with kepler.gl visualization support
+pip install geoclustering[full]
+
+# only text-based output
 pip install geoclustering
 ```
 
-If the install fails, you might need to install kepler.gl build dependencies:
+If the `full` install fails, you might need to install kepler.gl build dependencies:
 
 ```sh
 # macos
@@ -138,7 +142,7 @@ It is assumed that you are using **Python3.9+**. It is encouraged to [setup a vi
 
 ```sh
     # install dependencies & dev-dependencies
-    pip install -e .[dev]
+    pip install -e .[dev,full]
 
     # install a git hook that runs the code formatter before each commit.
     pre-commit install

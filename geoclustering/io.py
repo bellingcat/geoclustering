@@ -1,4 +1,3 @@
-from keplergl import KeplerGl
 from pathlib import Path
 from pkg_resources import resource_filename
 import json
@@ -6,6 +5,14 @@ import pandas as pd
 import numpy as np
 import os
 import sys
+
+# kepler is optional, check if installed.
+try:
+    from keplergl import KeplerGl
+except:
+    has_kepler = False
+else:
+    has_kepler = True
 
 
 class HiddenPrints:
@@ -77,6 +84,10 @@ def write_output_file(dirname, filename, data):
 
 def write_visualization(dirname, filename, data):
     """Write a visualization, ensuring parent directories."""
+
+    if not has_kepler:
+        return None
+
     # Hide kepler stdout output.
     with HiddenPrints():
         map = KeplerGl()
