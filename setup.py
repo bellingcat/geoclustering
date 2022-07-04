@@ -28,13 +28,13 @@ setup(
     install_requires=[
         "click",
         "geojson",
-        "keplergl",
         "numpy",
         "pandas",
         "scikit-learn",
     ],
     extras_require={
         "dev": ["black", "wheel", "pre-commit", "pytest"],
+        "full": ["keplergl"],
     },
     include_package_data=True,
     zip_safe=False,
