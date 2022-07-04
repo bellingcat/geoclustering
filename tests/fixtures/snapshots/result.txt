@@ -1,0 +1,7 @@
+Cluster 0
+id 1, name Alice, lat 52.523955, lon 13.442362
+id 2, name Bob, lat 52.526659, lon 13.448097
+
+Cluster 1
+id 3, name Carol, lat 52.525626, lon 13.419246
+id 4, name Dan, lat 52.52443559865125, lon 13.41261723049818
