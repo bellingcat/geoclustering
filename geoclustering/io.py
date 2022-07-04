@@ -50,8 +50,9 @@ def read_csv_file(filename):
 
     # construct an index of values with valid lat & lon.
     valid_index = df.lat.apply(is_valid_lat) & df.lon.apply(is_valid_lon)
+    df_invalid = df[~valid_index]
 
-    if count_invalid := len(df_invalid := df[~valid_index]):
+    if count_invalid := len(df_invalid):
         df_not_empty = df_invalid[
             (df_invalid.lat.apply(is_not_none) | df_invalid.lon.apply(is_not_none))
         ]
