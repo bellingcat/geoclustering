@@ -1,3 +1,4 @@
+import math
 from keplergl import KeplerGl
 from pathlib import Path
 from pkg_resources import resource_filename
@@ -38,17 +39,31 @@ def is_valid_lon(val: str) -> bool:
         return False
 
 
+def is_not_none(val: any) -> bool:
+    return val is not None
+
+
 def read_csv_file(filename):
     """Read input csv file, dropping rows that don't have valid location data."""
-    # replace NaN for other fields not to break kepler parsing.
+    # replace NaN for all fields not to break kepler parsing.
     df = pd.read_csv(filename).replace({np.nan: None})
 
     # construct an index of values with valid lat & lon.
     valid_index = df.lat.apply(is_valid_lat) & df.lon.apply(is_valid_lon)
 
-    if len(df_invalid := df[~valid_index]):
-        print(f"Found {len(df_invalid)} invalid coordinate pairs, ignoring:")
-        print(df_invalid[["lat", "lon"]].to_string())
+    if count_invalid := len(df_invalid := df[~valid_index]):
+        df_not_empty = df_invalid[
+            (df_invalid.lat.apply(is_not_none) | df_invalid.lon.apply(is_not_none))
+        ]
+        count_not_empty = len(df_not_empty)
+
+        if count_empty := count_invalid - count_not_empty:
+            print(f"Removed {count_empty} empty coordinate pairs.")
+
+        if count_not_empty:
+            print(f"Removed {count_not_empty} invalid coordinate pairs:")
+            print(df_not_empty[["lat", "lon"]].to_string())
+
     return df[valid_index]
 
 
