@@ -13,6 +13,8 @@ scikit-learn = "*"
 
 [dev-packages]
 black = "*"
+pre-commit = "*"
+pytest = "*"
 wheel = "*"
 
 [requires]

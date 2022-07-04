@@ -42,6 +42,10 @@ jobs:
               name: "Style"
               run: |
                 black --check .
+          - python: "3.10"
+            task:
+              name: "Test"
+              run: pytest --exitfirst --failed-first
 
     steps:
       - uses: actions/checkout@v3
