@@ -1,6 +1,5 @@
 from pathlib import Path
 import click
-import os
 import webbrowser
 
 import geoclustering.clustering as clustering
@@ -44,12 +43,13 @@ import geoclustering.io as io
 )
 @click.option(
     "--open",
+    "_open",
     is_flag=True,
     help="Open the generated visualization in the default browser automatically.",
 )
 @click.option("--debug", is_flag=True, help="Print debug output.")
 @click.argument("filename", type=click.Path(exists=True))
-def main(distance, size, output, filename, algorithm, open, debug):
+def main(distance, size, output, filename, algorithm, _open, debug):
     def print_debug(s):
         if debug:
             click.secho(s, fg="bright_black")
@@ -79,7 +79,7 @@ def main(distance, size, output, filename, algorithm, open, debug):
 
     click.echo(f"Output files saved to {Path(output).absolute()}")
 
-    if open:
+    if _open:
         if vis:
             webbrowser.open_new_tab("file://" + str(vis.absolute()))
             print_debug(f"Opened visualization in default browser.")
