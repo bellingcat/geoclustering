@@ -58,13 +58,16 @@ def read_csv_file(filename):
     valid_index = df.lat.apply(is_valid_lat) & df.lon.apply(is_valid_lon)
     df_invalid = df[~valid_index]
 
-    if count_invalid := len(df_invalid):
+    count_invalid = len(df_invalid)
+    if count_invalid:
         df_not_empty = df_invalid[
             (df_invalid.lat.apply(is_not_none) | df_invalid.lon.apply(is_not_none))
         ]
-        count_not_empty = len(df_not_empty)
 
-        if count_empty := count_invalid - count_not_empty:
+        count_not_empty = len(df_not_empty)
+        count_empty = count_invalid - count_not_empty
+
+        if count_empty:
             print(f"Removed {count_empty} empty coordinate pairs.")
 
         if count_not_empty:
