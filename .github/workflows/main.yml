@@ -41,14 +41,13 @@ jobs:
               name: "Lint"
               run: |
                 black --check .
-          - python: "3.7"
-            task:
-              name: "Lint (3.7)"
-              run: |
-                black --check .
           - python: "3.10"
             task:
               name: "Test"
+              run: pytest --exitfirst --failed-first
+          - python: "3.7"
+            task:
+              name: "Test (3.7)"
               run: pytest --exitfirst --failed-first
     steps:
       - uses: actions/checkout@v3
