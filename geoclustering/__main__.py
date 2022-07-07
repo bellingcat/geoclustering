@@ -75,14 +75,14 @@ def main(distance, size, output, filename, algorithm, _open, debug):
 
     vis = io.write_visualization(output, "result.html", encoded["geojson"])
     if vis is None:
-        print_debug(f"Skipped generating visualization: kepler is not installed.")
+        print_debug("Skipped generating visualization: kepler is not installed.")
 
     click.echo(f"Output files saved to {Path(output).absolute()}")
 
     if _open:
         if vis:
             webbrowser.open_new_tab("file://" + str(vis.absolute()))
-            print_debug(f"Opened visualization in default browser.")
+            print_debug("Opened visualization in default browser.")
         else:
             click.secho(
                 "Can't open kepler.gl: package not installed. Please re-install geoclustering with `pip install geoclustering[full]`.",

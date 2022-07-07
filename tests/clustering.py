@@ -1,6 +1,5 @@
 from geoclustering.clustering import cluster_locations
-from geoclustering.io import read_csv_file
-from tests.helpers import get_fixture_path, read_fixture_csv
+from tests.helpers import read_fixture_csv
 
 
 df = read_fixture_csv("clustering.csv")
