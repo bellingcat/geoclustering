@@ -36,17 +36,20 @@ jobs:
               run: |
                 python setup.py check
                 python setup.py bdist_wheel sdist
-
           - python: "3.10"
             task:
-              name: "Style"
+              name: "Lint"
+              run: |
+                black --check .
+          - python: "3.7"
+            task:
+              name: "Lint (3.7)"
               run: |
                 black --check .
           - python: "3.10"
             task:
               name: "Test"
               run: pytest --exitfirst --failed-first
-
     steps:
       - uses: actions/checkout@v3
 
