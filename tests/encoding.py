@@ -1,4 +1,3 @@
-from geoclustering.clustering import cluster_locations
 from geoclustering.encoding import encode_clusters
 from tests.helpers import read_fixture_csv, read_fixture_content
 
