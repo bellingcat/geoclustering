@@ -88,8 +88,13 @@ def write_output_file(dirname, filename, data):
     """Write a file, ensuring parent directories."""
     filepath = ensure_file_path(dirname, filename)
 
-    with open(filepath, "w") as f:
-        f.write(data)
+    if filename.split(".")[1] == "csv":
+        data_df = pd.json_normalize(data, record_path="points", meta="cluster_id")
+        data_df = data_df.drop_duplicates("id", keep="last").reset_index(drop="True")
+        data_df.to_csv(filepath, index=False)
+    else:
+        with open(filepath, "w") as f:
+            f.write(data)
 
     return filepath
 
