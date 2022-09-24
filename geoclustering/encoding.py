@@ -74,13 +74,30 @@ class GeoJSONEncoder:
         return json.dumps(geojson.FeatureCollection(self.state), cls=NpEncoder)
 
 
+class CSVEncoder:
+    """Encodes clustering result as a CSV"""
+
+    def __init__(self):
+        self.state = []
+
+    def visitor(self, cluster_id, cluster):
+        cluster_data = {"cluster_id": cluster_id, "points": []}
+
+        for record in cluster:
+            cluster_data["points"].append(record)
+            self.state.append(cluster_data)
+
+    def get(self):
+        return self.state
+
+
 def encode_clusters(clusters):
     json_encoder = JSONEncoder()
     geojson_encoder = GeoJSONEncoder()
     string_encoder = StringEncoder()
+    csv_encoder = CSVEncoder()
 
-    encoders = [json_encoder, geojson_encoder, string_encoder]
-
+    encoders = [json_encoder, geojson_encoder, string_encoder, csv_encoder]
     for cluster_id, cluster in clusters.items():
         for encoder in encoders:
             encoder.visitor(cluster_id, cluster)
@@ -89,4 +106,5 @@ def encode_clusters(clusters):
         "json": json_encoder.get(),
         "geojson": geojson_encoder.get(),
         "string": string_encoder.get(),
+        "csv": csv_encoder.get(),
     }
