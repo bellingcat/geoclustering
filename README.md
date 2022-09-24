@@ -72,7 +72,7 @@ id,name,lat,lon
 
 ## Output
 
-If at least one cluster was found, the tool outputs a folder with output as `json`, `geojson`, `txt` files. A kepler.gl `html` file is generated as well.
+If at least one cluster was found, the tool outputs a folder with output as `json`, `geojson`, `txt`, `csv` files. A kepler.gl `html` file is generated as well.
 
 ### JSON
 
@@ -130,6 +130,16 @@ Cluster 0
 id 9, name Rosanna Foggo, lat -6.2074293, lon 106.8915948
 
 // ...
+```
+
+### CSV
+
+Encodes an array of clusters, each containing an array of points, to dataframe.
+
+```csv
+id,name,lat,lon
+9,Rosanna Foggo,-6.2074293,106.8915948
+...
 ```
 
 ### kepler.gl
