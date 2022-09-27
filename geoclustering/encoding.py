@@ -43,11 +43,12 @@ class JSONEncoder:
         self.state = []
 
     def visitor(self, cluster_id, cluster):
+        print(cluster_id)
         cluster_data = {"cluster_id": cluster_id, "points": []}
 
         for record in cluster:
             cluster_data["points"].append(record)
-            self.state.append(cluster_data)
+        self.state.append(cluster_data)
 
     def get(self):
         return json.dumps(self.state, cls=NpEncoder)
