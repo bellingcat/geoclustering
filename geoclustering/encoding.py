@@ -85,7 +85,11 @@ class CSVEncoder:
 
     def visitor(self, cluster_id, cluster):
         if not self.writer:
-            self.writer = csv.DictWriter(self.state, fieldnames=["cluster_id"] + list(cluster[0].keys()), quoting=csv.QUOTE_NONNUMERIC)
+            self.writer = csv.DictWriter(
+                self.state,
+                fieldnames=["cluster_id"] + list(cluster[0].keys()),
+                quoting=csv.QUOTE_NONNUMERIC,
+            )
             self.writer.writeheader()
 
         for record in cluster:
