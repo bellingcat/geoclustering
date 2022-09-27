@@ -152,7 +152,10 @@ It is assumed that you are using **Python3.9+**. It is encouraged to [setup a vi
 
 ```sh
     # install dependencies & dev-dependencies
+    # PIP
     pip install -e .[dev,full]
+    # PIPENV
+    pipenv install --dev -e .
 
     # install a git hook that runs the code formatter before each commit.
     pre-commit install

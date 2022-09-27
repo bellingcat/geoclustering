@@ -47,7 +47,7 @@ class JSONEncoder:
 
         for record in cluster:
             cluster_data["points"].append(record)
-            self.state.append(cluster_data)
+        self.state.append(cluster_data)
 
     def get(self):
         return json.dumps(self.state, cls=NpEncoder)
