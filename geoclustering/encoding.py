@@ -89,6 +89,7 @@ class CSVEncoder:
                 self.state,
                 fieldnames=["cluster_id"] + list(cluster[0].keys()),
                 quoting=csv.QUOTE_NONNUMERIC,
+                lineterminator="\n",
             )
             self.writer.writeheader()
 

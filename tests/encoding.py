@@ -27,3 +27,4 @@ def test_encoders():
     assert res["string"] == read_fixture_content("snapshots/result.txt")
     assert res["json"] == read_fixture_content("snapshots/result.json")
     assert res["geojson"] == read_fixture_content("snapshots/result.geojson")
+    assert res["csv"] == read_fixture_content("snapshots/result.csv")
