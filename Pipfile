@@ -16,6 +16,7 @@ black = "*"
 pre-commit = "*"
 pytest = "*"
 wheel = "*"
+geoclustering = {editable = true, path = "."}
 
 [requires]
 python_version = "3.9"

@@ -68,10 +68,10 @@ def main(distance, size, output, filename, algorithm, _open, debug):
     print_debug(f"Found {len(clusters)} valid clusters using {algorithm}")
 
     encoded = encoding.encode_clusters(clusters)
-
     io.write_output_file(output, "result.txt", encoded["string"])
     io.write_output_file(output, "result.json", encoded["json"])
     io.write_output_file(output, "result.geojson", encoded["geojson"])
+    io.write_output_file(output, "result.csv", encoded["csv"])
 
     vis = io.write_visualization(output, "result.html", encoded["geojson"])
     if vis is None:
