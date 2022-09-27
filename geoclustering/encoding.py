@@ -43,7 +43,6 @@ class JSONEncoder:
         self.state = []
 
     def visitor(self, cluster_id, cluster):
-        print(cluster_id)
         cluster_data = {"cluster_id": cluster_id, "points": []}
 
         for record in cluster:
