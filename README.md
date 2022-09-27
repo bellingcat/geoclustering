@@ -162,3 +162,9 @@ It is assumed that you are using **Python3.9+**. It is encouraged to [setup a vi
 ```
 
 We use [Black](https://github.com/psf/black) as our code formatter. If you don't want to use the `pre-commit` hook, you can run the formatter manually or via an editor plugin.
+
+## Release
+
+1. Update [version.py](geoclustering/version.py)
+2. Run `scripts/release.sh` 
+3. Confirm GH action completed successfully
