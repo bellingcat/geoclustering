@@ -134,10 +134,10 @@ id 9, name Rosanna Foggo, lat -6.2074293, lon 106.8915948
 
 ### CSV
 
-Encodes an array of clusters, each containing an array of points, to dataframe.
+Encodes each event in one line with `cluster_id` information associated.
 
 ```csv
-id,name,lat,lon
+cluster_id,name,lat,lon
 9,Rosanna Foggo,-6.2074293,106.8915948
 ...
 ```

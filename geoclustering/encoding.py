@@ -1,6 +1,8 @@
 import json
 import numpy as np
 import geojson
+import csv
+import io  # not io.py
 
 
 class NpEncoder(json.JSONEncoder):
@@ -78,17 +80,19 @@ class CSVEncoder:
     """Encodes clustering result as a CSV"""
 
     def __init__(self):
-        self.state = []
+        self.state = io.StringIO()
+        self.writer = False
 
     def visitor(self, cluster_id, cluster):
-        cluster_data = {"cluster_id": cluster_id, "points": []}
+        if not self.writer:
+            self.writer = csv.DictWriter(self.state, fieldnames=["cluster_id"] + list(cluster[0].keys()), quoting=csv.QUOTE_NONNUMERIC)
+            self.writer.writeheader()
 
         for record in cluster:
-            cluster_data["points"].append(record)
-            self.state.append(cluster_data)
+            self.writer.writerow({**record, "cluster_id": cluster_id})
 
     def get(self):
-        return self.state
+        return self.state.getvalue()
 
 
 def encode_clusters(clusters):
