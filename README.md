@@ -19,7 +19,8 @@ Install with uv:
 
 ```sh
 # with kepler.gl visualization support
-uv tool install 'geoclustering[full]'
+# need to allow prereleases to use a current kepler.gl version
+uv tool install --prerelease=allow 'geoclustering[full]'
 
 # only text-based output
 uv tool install geoclustering
