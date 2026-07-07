@@ -1,5 +1,7 @@
 from pathlib import Path
-from pkg_resources import resource_filename
+
+from importlib.resources import files as resource_files
+
 import json
 import pandas as pd
 import numpy as np
@@ -32,7 +34,7 @@ def is_valid_lat(val: str) -> bool:
     try:
         val = float(val)
         return val >= -90 and val <= 90
-    except:
+    except (ValueError, TypeError):
         return False
 
 
@@ -41,7 +43,7 @@ def is_valid_lon(val: str) -> bool:
     try:
         val = float(val)
         return val >= -180 and val <= 180
-    except:
+    except (ValueError, TypeError):
         return False
 
 
@@ -107,9 +109,8 @@ def write_visualization(dirname, filename, data):
     map.add_data(data=data, name="clusters")
 
     # config configures a default color scheme for our clusters layer.
-    config_file = resource_filename("geoclustering", "kepler_config.json")
-    with open(config_file) as f:
-        map.config = json.loads(f.read())
+    config_file = resource_files("geoclustering").joinpath("kepler_config.json")
+    map.config = json.loads(config_file.read_text())
 
     filepath = ensure_file_path(dirname, filename)
 
