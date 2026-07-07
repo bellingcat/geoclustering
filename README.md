@@ -15,14 +15,14 @@ A cluster is created when a certain number of points (defined with `--size`) eac
 
 ## Install
 
-Install with pip:
+Install with uv:
 
 ```sh
 # with kepler.gl visualization support
-pip install geoclustering[full]
+uv tool install 'geoclustering[full]'
 
 # only text-based output
-pip install geoclustering
+uv tool install geoclustering
 ```
 
 If the `full` install fails, you might need to install kepler.gl build dependencies:
@@ -148,23 +148,26 @@ cluster_id,name,lat,lon
 
 ## Develop
 
-It is assumed that you are using **Python3.9+**. It is encouraged to [setup a virtualenv](https://wiki.archlinux.org/title/Python/Virtual_environment#venv>) for development.
+It is assumed that you are using **Python3.14+** and [uv](https://docs.astral.sh/uv/).
 
 ```sh
-    # install dependencies & dev-dependencies
-    # PIP
-    pip install -e .[dev,full]
-    # PIPENV
-    pipenv install --dev -e .
+# install dependencies and dev tools
+uv sync --group dev --extra full
 
-    # install a git hook that runs the code formatter before each commit.
-    pre-commit install
+# run tests
+uv run pytest
+
+# run the linter
+uv run ruff check .
+
+# install a git hook that runs the linter before each commit
+uv run prek install
 ```
 
-We use [Black](https://github.com/psf/black) as our code formatter. If you don't want to use the `pre-commit` hook, you can run the formatter manually or via an editor plugin.
+We use [Ruff](https://docs.astral.sh/ruff/) for linting.
 
 ## Release
 
-1. Update [version.py](geoclustering/version.py)
-2. Run `scripts/release.sh` 
+1. Update `version` in [pyproject.toml](pyproject.toml)
+2. Run `scripts/release.sh`
 3. Confirm GH action completed successfully

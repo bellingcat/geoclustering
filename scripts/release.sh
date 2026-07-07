@@ -2,7 +2,7 @@
 
 set -e
 
-TAG=$(python -c 'from geoclustering.version import VERSION; print("v" + VERSION)')
+TAG=$(uv run --no-sync python -c 'import tomllib; print("v" + tomllib.loads(open("pyproject.toml").read())["project"]["version"])')
 
 read -p "Creating new release for $TAG. Do you want to continue? [Y/n] " prompt
 

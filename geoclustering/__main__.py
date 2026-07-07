@@ -85,7 +85,7 @@ def main(distance, size, output, filename, algorithm, _open, debug):
             print_debug("Opened visualization in default browser.")
         else:
             click.secho(
-                "Can't open kepler.gl: package not installed. Please re-install geoclustering with `pip install geoclustering[full]`.",
+                "Can't open kepler.gl: package not installed. Please re-install geoclustering with `uv tool install geoclustering[full]`.",
                 fg="yellow",
             )
 

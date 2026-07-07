@@ -11,7 +11,7 @@ import sys
 # kepler is optional, check if installed.
 try:
     from keplergl import KeplerGl
-except:
+except ImportError:
     has_kepler = False
 else:
     has_kepler = True
