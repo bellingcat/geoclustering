@@ -33,7 +33,6 @@ setup(
         "scikit-learn",
         # importlib.resources.files() is only available in the stdlib from
         # Python 3.9 onwards; use the backport on 3.8.
-        'importlib_resources; python_version < "3.9"',
     ],
     extras_require={
         "dev": ["black", "wheel", "pre-commit", "pytest"],

@@ -1,11 +1,6 @@
 from pathlib import Path
 
-try:
-    # Python 3.9+
-    from importlib.resources import files as resource_files
-except ImportError:
-    # Python 3.8 backport
-    from importlib_resources import files as resource_files
+from importlib.resources import files as resource_files
 
 import json
 import pandas as pd
