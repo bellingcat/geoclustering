@@ -45,10 +45,6 @@ jobs:
             task:
               name: "Test"
               run: pytest --exitfirst --failed-first --assert=plain
-          - python: "3.8"
-            task:
-              name: "Test (3.8)"
-              run: pytest --exitfirst --failed-first --assert=plain
     steps:
       - uses: actions/checkout@v3
 

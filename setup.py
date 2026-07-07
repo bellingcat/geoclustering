@@ -21,6 +21,7 @@ setup(
     author="Bellingcat",
     author_email="tech@bellingcat.com",
     license="MIT",
+    python_requires=">=3.9",
     packages=["geoclustering"],
     package_data={"geoclustering": ["kepler_config.json"]},
     keywords=["cluster", "gis", "pattern-analysis"],
