@@ -56,6 +56,13 @@ def read_csv_file(filename):
     # replace NaN for all fields not to break kepler parsing.
     df = pd.read_csv(filename).replace({np.nan: None})
 
+    missing = {"lat", "lon"} - set(df.columns)
+    if missing:
+        raise ValueError(
+            "CSV file must contain 'lat' and 'lon' columns "
+            "(missing: {}).".format(", ".join(sorted(missing)))
+        )
+
     # construct an index of values with valid lat & lon.
     valid_index = df.lat.apply(is_valid_lat) & df.lon.apply(is_valid_lon)
     df_invalid = df[~valid_index]

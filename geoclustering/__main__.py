@@ -54,7 +54,10 @@ def main(distance, size, output, filename, algorithm, _open, debug):
         if debug:
             click.secho(s, fg="bright_black")
 
-    df = io.read_csv_file(filename)
+    try:
+        df = io.read_csv_file(filename)
+    except ValueError as exc:
+        raise click.ClickException(str(exc)) from None
     print_debug(f"Read {len(df)} valid coordinates from {Path(filename).absolute()}")
 
     clusters = clustering.cluster_locations(
